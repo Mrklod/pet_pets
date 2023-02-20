@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Главная</a></li>
+          <li><a href="#">О нас</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Добро пожаловать на страницу о животных</h1>
+      <p>Здесь вы можете узнать много интересного о наших милых друзьях из животного мира!</p>
+
+      {% for i in animal %}
+      <p>{{ i.name }}</p>
+      <p>Возраст:{{ i.age }}</p>
+      <p>{{ i.text }}</p>
+      <p>Категория:{{ i.category }}</p>
+      <p>Кличка:{{ i.nickname }}</p>
+      {% endfor %}
+    </main>
+
+    <footer>
+      <p>Copyright © 2023</p>
+      <ul>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Условия использования</a></li>
+        <li><a href="#">Политика конфиденциальности</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
