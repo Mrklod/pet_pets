@@ -9,9 +9,8 @@
     <main>
       <h1>Добро пожаловать на страницу о животных</h1>
       <p>Здесь вы можете узнать много интересного о наших милых друзьях из животного мира!</p>
-
-      {% for i in animal %}
       <hr>
+      {% for i in animal %}
       <p>{{ i.name }}</p>
       <p>Возраст:{{ i.age }}</p>
       <p>{{ i.text }}</p>
@@ -20,6 +19,11 @@
       {% if i.image %}
       <img src="{{ i.image.url }}">
       {% endif %}
+      <div class="button-container">
+        <button class="my-button"><a href="{% url 'post' i.pk %}">Читать подробнее</a></button>
+      </div>
+      <hr>
+
       {% endfor %}
     </main>
 {% endblock content %}
