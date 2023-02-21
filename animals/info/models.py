@@ -11,6 +11,7 @@ class Animal(models.Model):
     name = models.CharField(max_length=150)
     age = models.SmallIntegerField()
     text = models.TextField()
+    image = models.ImageField(upload_to='animals',blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     nickname = models.CharField(max_length=160)
 

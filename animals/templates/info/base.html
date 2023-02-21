@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block style %}
+    {% endblock style %}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'index' %}">Главная</a></li>
+          <li><a href="{% url 'us' %}">О нас</a></li>
+          <li><a href="{% url 'contact' %}">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
+
+{% block content %}
+{% endblock content %}
+
+    <footer>
+      <p>© 2023</p>
+      <ul>
+        <li><a href="{% url 'contact' %}">Контакты</a></li>
+        <li><a href="#">Условия использования</a></li>
+        <li><a href="#">Политика конфиденциальности</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
