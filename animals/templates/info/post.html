@@ -1,2 +1,19 @@
 {% extends 'info/base.html' %}
 {% load static %}
+
+{% block content %}
+{% for i in post %}
+      <p>{{ i.name }}</p>
+      <p>Возраст:{{ i.age }}</p>
+      <p>{{ i.text }}</p>
+      <p>Категория:{{ i.category }}</p>
+      <p>Кличка:{{ i.nickname }}</p>
+      {% if i.image %}
+      <img src="{{ i.image.url }}">
+      {% endif %}
+      <div class="button-container">
+        <button class="my-button"><a href="{% url 'post' i.pk %}">Читать подробнее</a></button>
+      </div>
+      <hr>
+{% endfor %}
+{% endblock %}

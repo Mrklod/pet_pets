@@ -7,4 +7,5 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('us/',us,name='us'),
     path('post/<int:post_id>',read,name='post'),
+    path('addpost/',addpost,name='addpost'),
 ]

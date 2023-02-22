@@ -1,5 +1,7 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
+from .forms import *
+
 
 def index(request):
     cat = Category.objects.all()
@@ -14,5 +16,15 @@ def us(request):
     return render(request,'info/us.html')
 
 def read(request,post_id):
-    post = get_object_or_404(Animal,pk=post_id)
-    return render(request,'info/post.html',{'post':post})
+    c = Animal.objects.filter(pk=post_id)
+    context = {'post':c}
+    return render(request,'info/post.html',context)
+
+def addpost(request):
+    form = PostForm()
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'info/addpost.html', {'form': form})
