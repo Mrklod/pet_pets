@@ -28,3 +28,7 @@ def addpost(request):
             form.save()
             return redirect('index')
     return render(request, 'info/addpost.html', {'form': form})
+
+def base(request):
+    cat = Category.objects.all()
+    return render(request,'info/base.html',{'cat':cat})

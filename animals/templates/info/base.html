@@ -1,33 +1,100 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block style %}
     {% endblock style %}
-  </head>
-  <body>
-    <header>
-      <nav>
+</head>
+<body>
+<header>
+    <nav>
         <ul>
-          <li><a href="{% url 'index' %}">Главная</a></li>
-          <li><a href="{% url 'us' %}">О нас</a></li>
-          <li><a href="{% url 'contact' %}">Контакты</a></li>
-          <li><a href="{% url 'addpost' %}">Добавить пост</a></li>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'us' %}">О нас</a></li>
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
+            <li><a href="{% url 'addpost' %}">Добавить пост</a></li>
+            <li><a href="#"><label for="animals">
+                <button onclick="showDropdown()">Обрати вид тварин</button>
+                <div id="dropdown" style="display:none">
+                    <label for="animals">Вид:</label>
+                    <select id="animals" name="animals">
+                        {% for i in cat %}
+                        <option value="dog">{{ i.category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </a></li>
         </ul>
-      </nav>
-    </header>
+    </nav>
+    <style>
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#dropdown {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  display: block;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+    </style>
+
+</header>
+
 
 {% block content %}
 {% endblock content %}
 
-    <footer>
-      <p>© 2023</p>
-      <ul>
+<footer>
+    <p>© 2023</p>
+    <ul>
         <li><a href="{% url 'contact' %}">Контакты</a></li>
         <li><a href="#">Условия использования</a></li>
         <li><a href="#">Политика конфиденциальности</a></li>
-      </ul>
-    </footer>
-  </body>
+    </ul>
+</footer>
+</body>
+<script>
+function showDropdown() {
+  var dropdown = document.getElementById("dropdown");
+  if (dropdown.style.display === "none") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
+
+
+
+</script>
 </html>
